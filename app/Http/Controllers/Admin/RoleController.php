@@ -110,6 +110,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return redirect()->back()->withSuccess('Role deleted !!!');
+        return redirect()->back()->withSuccess(__('role_deleted'));
     }
 }

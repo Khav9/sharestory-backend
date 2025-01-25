@@ -46,9 +46,9 @@
                                 </th>
                                 <td class="px-6 py-4">
                                     @if($post->publish)
-                                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-white bg-green-500 rounded-full">Publish</span>
+                                    <span class="bg-green-50 text-green-700 px-3 py-1 ring-1 ring-green-200 text-xs rounded-md">Publish</span>
                                     @else
-                                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-white bg-gray-500 rounded-full">Draft</span>
+                                    <span class="bg-gray-50 text-gray-700 px-3 py-1 ring-1 ring-gray-200 text-xs rounded-md">Draft</span>
                                     @endif
                                 </td>
                                 <td class="px-6 py-4">10000</td>
@@ -61,7 +61,7 @@
                                     <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="inline">
                                         @csrf
                                         @method('delete')
-                                        <button class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Delete</button>
+                                        <button class="bg-red-50 text-red-700 px-3 py-1 ring-1 ring-gray-200 text-xs rounded-md">Delete</button>
                                     </form>
                                     @endcan
                                 </td>
@@ -89,16 +89,19 @@
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #4a5568; /* Darker gray */
+            background: #4a5568;
+            /* Darker gray */
             border-radius: 4px;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #2d3748; /* Even darker gray */
+            background: #2d3748;
+            /* Even darker gray */
         }
 
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #e2e8f0; /* Light gray */
+            background: #e2e8f0;
+            /* Light gray */
         }
     </style>
 </x-app-layout>

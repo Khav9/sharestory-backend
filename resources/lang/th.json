@@ -12,5 +12,21 @@
     "setting": "การตั้งค่า",
     "logout": "ออกจากระบบ",
     "search": "ค้นหา",
-    "profile": "โปรไฟล์"
+    "profile": "โปรไฟล์",
+    "total_active_user": "ผู้ใช้ที่ใช้งานทั้งหมด",
+    "total_post": "โพสต์ทั้งหมด",
+    "total_draft": "ร่างทั้งหมด",
+    "user_source": "แหล่งที่มาของผู้ใช้",
+    "avatar": "อวาตาร์",
+    "username": "ชื่อผู้ใช้",
+    "react": "React",
+    "period": "ระยะเวลา",
+    "khmer": "เขมร",
+    "english": "อังกฤษ",
+    "thai": "ไทย",
+    "student": "นักเรียน",
+    "teacher": "ครู",
+    "researcher": "นักวิจัย",
+    "coder": "โปรแกรมเมอร์",
+    "any": "ใด ๆ"
 }

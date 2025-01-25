@@ -1,8 +1,8 @@
 <?php
 $languages = [
-    'km' => ['name' => 'Khmer', 'flag' => 'km.jpg'],
-    'en' => ['name' => 'English', 'flag' => 'en.jpg'],
-    'th' => ['name' => 'Thai', 'flag' => 'th.jpg'],
+    'km' => ['name' => __('khmer'), 'flag' => 'km.jpg'],
+    'en' => ['name' => __('english'), 'flag' => 'en.jpg'],
+    'th' => ['name' => __('thai'), 'flag' => 'th.jpg'],
     // Add more languages as needed
 ];
 
@@ -29,7 +29,7 @@ $currentLanguage = session('locale', 'km');
                 </svg>
             </span>
             <input class="form-input w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600 focus:ring focus:ring-indigo-200"
-                type="text" placeholder="Search">
+                type="text" placeholder="{{__('search')}}">
         </div>
     </div>
 
@@ -89,13 +89,13 @@ $currentLanguage = session('locale', 'km');
                     class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
                     style="display: none;">
                     <a href="{{ route('admin.profile') }}"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">{{__('profile')}}</a>
 
                     <form method="POST" action="{{ route('admin.logout') }}">
                         @csrf
                         <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();
                                                 this.closest('form').submit();"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</a>
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">{{__('logout')}}</a>
                     </form>
                 </div>
             </div>

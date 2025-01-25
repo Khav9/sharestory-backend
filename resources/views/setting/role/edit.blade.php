@@ -7,18 +7,18 @@
                   @csrf
                   @method('put')
                 <div class="flex flex-col space-y-2">
-                  <label for="role_name" class="text-gray-700 select-none font-medium">Role Name</label>
+                  <label for="role_name" class="text-gray-700 select-none font-medium">{{__('role_name')}}</label>
                   <input
                     id="role_name"
                     type="text"
                     name="name"
                     value="{{ old('name',$role->name) }}"
-                    placeholder="Placeholder"
+                    placeholder="{{__('enter_role')}}"
                     class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
                   />
                 </div>
 
-                <h3 class="text-xl my-4 text-gray-600">Permissions</h3>
+                <h3 class="text-xl my-4 text-gray-600">{{__('permissions')}}</h3>
                 <div class="grid grid-cols-3 gap-4">
                   @foreach($permissions as $permission)
                       <div class="flex flex-col justify-cente">
@@ -34,7 +34,7 @@
                   @endforeach
                 </div>
                 <div class="text-center mt-16">
-                  <button type="submit" class="bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">Update</button>
+                  <button type="submit" class="bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">{{__('update')}}</button>
                 </div>
               </div>
 
