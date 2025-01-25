@@ -41,7 +41,7 @@ $currentLanguage = session('locale', 'km');
                 class="py-2.5 px-4 flex items-center text-sm font-medium text-gray-500 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 focus:ring-2 focus:ring-indigo-200 transition">
 
                 <!-- Display Flag and Current Language -->
-                <img src="{{ asset('storage/lang/' . $currentLanguage . '.jpg') }}"
+                <img src="{{ asset('data/lang/' . $currentLanguage . '.jpg') }}"
                     alt="{{ $languages[$currentLanguage]['name'] }}"
                     style="width: 25px; height: auto;" class="mr-1">
                 {{ $languages[$currentLanguage]['name'] }}
@@ -59,7 +59,7 @@ $currentLanguage = session('locale', 'km');
                     <li>
                         <a href="{{ url('lang/' . $locale) }}"
                             class="flex w-full px-4 py-2 items-center hover:bg-gray-100">
-                            <img src="{{ asset('storage/lang/' . $language['flag']) }}"
+                            <img src="{{ asset('data/lang/' . $language['flag']) }}"
                                 alt="{{ $language['name'] }}"
                                 style="width: 25px; height: auto;"
                                 class="mr-1">
@@ -73,18 +73,32 @@ $currentLanguage = session('locale', 'km');
         <!-- End language selector -->
 
         <!-- Profile dropdown -->
-        <div x-data="{ dropdownOpen: false }" class="relative">
-            <button @click="dropdownOpen = !dropdownOpen" class="relative block h-10 w-10 rounded-full overflow-hidden shadow-md focus:outline-none">
-                <img class="h-full w-full object-cover" src="/images/{{ auth()->user()->profile }}" alt="User avatar">
-            </button>
-            <div x-show="dropdownOpen" @click.away="dropdownOpen = false" class="absolute mt-2 right-0 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-20">
-                <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
-                <form method="POST" action="/logout">
-                    @csrf
-                    <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</button>
-                </form>
+        <div class="flex items-center">
+            <div x-data="{ dropdownOpen: false }" class="relative">
+                <button @click="dropdownOpen = ! dropdownOpen"
+                    class="relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none">
+                    <img class="h-full w-full object-cover"
+                        src="/images/{{ auth()->user()->profile }}"
+                        alt="Your avatar">
+                </button>
+
+                <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
+                    style="display: none;"></div>
+
+                <div x-show="dropdownOpen"
+                    class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
+                    style="display: none;">
+                    <a href="{{ route('admin.profile') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
+
+                    <form method="POST" action="{{ route('admin.logout') }}">
+                        @csrf
+                        <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();
+                                                this.closest('form').submit();"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</a>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 </header>
 <script src="//unpkg.com/alpinejs" defer></script>
