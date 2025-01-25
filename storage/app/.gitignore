@@ -1,3 +1,9 @@
+# Ignore all files by default
 *
+
+# Allow public/ folder and all its contents
 !public/
+!public/**
+
+# Always track this .gitignore file
 !.gitignore
