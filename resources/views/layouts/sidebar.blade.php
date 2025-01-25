@@ -4,7 +4,7 @@
         <img src="{{ asset('storage/logos/ss_logo.avif') }}" alt="Logo" style="width: 35px; height: auto;">
 
             <a href="{{ route('admin.dashboard') }}">
-                <span class="text-white text-2xl mx-2 font-semibold">SHARE STORY</span>
+                <span class="text-white text-2xl mx-2 font-semibold">{{ __('share-story')}}</span>
             </a>
         </div>
     </div>
@@ -19,7 +19,7 @@
                     d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
             </svg>
 
-            <span class="mx-3">Dashboard</span>
+            <span class="mx-3">{{ __('dashboard')}}</span>
         </a>
 
         @canany('Role access','Role add','Role edit','Role delete')
@@ -32,7 +32,7 @@
                 </path>
             </svg>
 
-            <span class="mx-3">Role</span>
+            <span class="mx-3">{{ __('role')}}</span>
         </a>
         @endcanany
         @canany('Permission access','Permission add','Permission edit','Permission delete')
@@ -45,7 +45,7 @@
                 </path>
             </svg>
 
-            <span class="mx-3">Permission</span>
+            <span class="mx-3">{{ __('permission')}}</span>
         </a>
         @endcanany
 
@@ -58,7 +58,7 @@
                 </svg>
             </span>
 
-            <span class="mx-3">User Managment</span>
+            <span class="mx-3">{{ __('user-management')}}</span>
         </a>
         @endcanany
 
@@ -69,7 +69,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
-            <span class="mx-3">Report</span>
+            <span class="mx-3">{{ __('post')}}</span>
         </a>
         @endcanany
 
@@ -80,7 +80,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
             </svg>
 
-            <span class="mx-3">Setting</span>
+            <span class="mx-3">{{ __('email')}}</span>
         </a>
         @endcanany
     </nav>
@@ -92,7 +92,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
                 </svg>
-                <span class="mx-3">Logout</span>
+                <span class="mx-3">{{ __('logout')}}</span>
             </button>
         </form>
     </div>
