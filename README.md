@@ -26,3 +26,7 @@
 - #### User
 - email: user@gmail.com
 - password: password
+
+## User data
+- store profile in public (anyone can access it)
+- store in storage (for secure data)
