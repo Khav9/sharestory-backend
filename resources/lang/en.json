@@ -38,6 +38,11 @@
     "enter_role": "Enter role",
     "submit": "Submit",
     "update": "Update",
-    "role_deleted": "Role deleted !!!"
+    "role_deleted": "Role deleted !!!",
+    "permission_name": "Permission Name",
+    "created": "Created",
+    "last_login": "Last Login",
+    "new_user": "New User",
+    "mail_setting": "Mail Setting"
 
 }
