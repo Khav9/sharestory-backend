@@ -60,9 +60,15 @@
                             <tr class="border-b">
                                 <td class="px-4 py-2">{{$key + 1}}</td>
                                 <td class="px-4 py-2">
-                                    <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+                                    @if ($user->profile)
+                                    <img class="inline-block w-8 h-8 rounded-full ring-2 ring-white"
+                                        src="{{ asset('images/profiles/' . $user->profile) }}"
                                         alt="">
+                                    @else
+                                    <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                                        src="{{ asset('images/profiles/none_profile.jpg') }}"
+                                        alt="">
+                                    @endif
                                 </td>
                                 <td class="px-4 py-2">{{$user->name}}</td>
                                 <td class="px-4 py-2">10k</td>
@@ -82,32 +88,32 @@
         </section>
     </main>
     <script>
-    var translations = {
-        student: "{{ __('student') }}",
-        teacher: "{{ __('teacher') }}",
-        researcher: "{{ __('researcher') }}",
-        coder: "{{ __('coder') }}",
-        any: "{{ __('any') }}"
-    };
+        var translations = {
+            student: "{{ __('student') }}",
+            teacher: "{{ __('teacher') }}",
+            researcher: "{{ __('researcher') }}",
+            coder: "{{ __('coder') }}",
+            any: "{{ __('any') }}"
+        };
 
-    var options = {
-        chart: {
-            height: '300px',
-            type: "pie",
-        },
-        colors: ["#4CAF50", "#FF9800", "#2196F3", "#9C27B0", "#FF5722"],
-        series: [35, 15, 18, 12, 20],
-        labels: [
-            translations.student,
-            translations.teacher,
-            translations.researcher,
-            translations.coder,
-            translations.any
-        ]
-    };
+        var options = {
+            chart: {
+                height: '300px',
+                type: "pie",
+            },
+            colors: ["#4CAF50", "#FF9800", "#2196F3", "#9C27B0", "#FF5722"],
+            series: [35, 15, 18, 12, 20],
+            labels: [
+                translations.student,
+                translations.teacher,
+                translations.researcher,
+                translations.coder,
+                translations.any
+            ]
+        };
 
-    var chart = new ApexCharts(document.querySelector("#pie_chart"), options);
-    chart.render();
-</script>
+        var chart = new ApexCharts(document.querySelector("#pie_chart"), options);
+        chart.render();
+    </script>
 
 </x-app-layout>

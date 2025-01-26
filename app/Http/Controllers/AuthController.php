@@ -16,7 +16,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'email'     => 'required|string|max:255',
             'password'  => 'required|string'
-          ]);
+        ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors());
@@ -39,7 +39,7 @@ class AuthController extends Controller
             'token_type'    => 'Bearer'
         ]);
     }
-    
+
     public function index(Request $request)
     {
         $user = $request->user();
@@ -47,7 +47,43 @@ class AuthController extends Controller
         // $roles = $user->getRoleNames();
         return response()->json([
             'message' => 'Login success',
-            'data' =>$user,
+            'data' => $user,
         ]);
+    }
+
+    public function register(Request $request): JsonResponse
+    {
+        $validator = Validator::make($request->all(), [
+            'name'      => 'required|string|max:255',
+            'email'     => 'required|string|email|max:255|unique:users',
+            'password'  => 'required|string|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        try {
+            $user = User::create([
+                'name'      => $request->name,
+                'email'     => $request->email,
+                'password'  => Hash::make($request->password),
+                'profile'   => 'none_profile.jpg', //default profile 
+                'role_id'   => 2
+            ]);
+
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+                'message'       => 'Registration successful',
+                'access_token'  => $token,
+                'token_type'    => 'Bearer',
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Registration failed',
+                'error'   => $e->getMessage(),
+            ], 500);
+        }
     }
 }

@@ -47,7 +47,7 @@
                   </td>
                   <td class="py-4 px-6 border-b border-grey-light">
                     <a href="{{ route('admin.users.show', $user->id) }}" class="block">
-                      0
+                      {{$user->posts_count}}
                     </a>
                   </td>
                   <td class="py-4 px-6 border-b border-grey-light text-right">

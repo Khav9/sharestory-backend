@@ -21,14 +21,16 @@ class AdminSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
-            'profile' => 'user.avif'
+            'profile' => 'none_profile.jpg',
+            'role_id' => 1
         ]);
 
         $writer = User::create([
             'name' => 'User',
             'email' => 'user@gmail.com',
             'password' => bcrypt('password'),
-            'profile' => 'user.avif'
+            'profile' => 'none_profile.jpg',
+            'role_id' => 2
         ]);
 
 

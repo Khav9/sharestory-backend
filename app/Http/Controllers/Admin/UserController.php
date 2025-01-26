@@ -9,6 +9,7 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -35,11 +36,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('role_id', '!=', 1)->paginate(10);
-    
+        try {
+            $users = User::where('role_id', '=', 2)->withCount('posts')->paginate(10);
+        } catch (\Exception $e) {
+            Log::error('Error fetching users: ' . $e->getMessage());
+
+            return back()->withErrors('Something went wrong while fetching users.');
+        }
+
         return view('setting.user.index', ['users' => $users]);
     }
-    
+
+
 
     /**
      * Show the form for creating a new resource.

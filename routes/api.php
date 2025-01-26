@@ -15,10 +15,22 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//test
+Route::get('/test', function () {
+    return response()->json(['status' => 'success', 'message' => 'This is api for testing']);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+
 Route::get('/me', [AuthController::class, 'index'])->middleware('auth:sanctum');
 Route::get('/post/list', [PostController::class, 'index'])->middleware('auth:sanctum');
+
+
+// Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
+//     Route::apiResource('users', 'UserController');
+// });

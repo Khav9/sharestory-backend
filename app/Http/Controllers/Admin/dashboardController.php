@@ -34,7 +34,7 @@ class DashboardController extends Controller
     public function index()
     {
         //get users who have a lot of react
-        $totalUser = User::where('role_id',1)->count();
+        $totalUser = User::where('role_id',2)->count();
         $totalPost = Post::where('publish', 1)->count();
         $totalDraft = Post::where('publish', 0)->count();
         $users = User::limit(9)->get();
