@@ -1,17 +1,20 @@
 <?php
+
 namespace App\Traits;
 
-trait uploadImage{
+trait uploadImage
+{
 
     function saveImage($image, $path = null)
     {
         $path = $path ?: 'images';
 
-        $imageName = time().'_'.$image->getClientOriginalName();
+        $imageName = time() . '_' . $image->getClientOriginalName();
 
-        $image->move(public_path($path), $imageName);
+        // Store the image in the storage/app/public directory
+        $storedPath = $image->storeAs($path, $imageName, 'public');
 
         // $image->storeAs($path,$imageName,'public');
-        return $imageName;
+        return $storedPath;
     }
 }

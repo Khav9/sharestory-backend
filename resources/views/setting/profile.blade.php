@@ -65,7 +65,7 @@
     function imageData() {
         var files = document.getElementById("thumbnailprev").files;
         if(files.length == 0){
-            var url = '/images/profiles/'+{!! json_encode($user->profile) !!};
+            var url = {!! json_encode(Storage::url($user->profile)) !!};
         }else{
             url = '';
         }

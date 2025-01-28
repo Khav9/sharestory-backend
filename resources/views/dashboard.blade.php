@@ -62,7 +62,7 @@
                                 <td class="px-4 py-2">
                                     @if ($user->profile)
                                     <img class="inline-block w-8 h-8 rounded-full ring-2 ring-white"
-                                        src="{{ asset('images/profiles/' . $user->profile) }}"
+                                        src="{{ Storage::url($user->profile) }}"
                                         alt="">
                                     @else
                                     <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white"

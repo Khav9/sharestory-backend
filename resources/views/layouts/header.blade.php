@@ -77,9 +77,15 @@ $currentLanguage = session('locale', 'km');
             <div x-data="{ dropdownOpen: false }" class="relative">
                 <button @click="dropdownOpen = ! dropdownOpen"
                     class="relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none">
+                    @if (auth()->user()->profile)
                     <img class="h-full w-full object-cover"
-                        src="/images/profiles/{{ auth()->user()->profile }}"
+                        src="{{ Storage::url(auth()->user()->profile) }}"
                         alt="Your avatar">
+                    @else
+                    <img class="h-full w-full object-cover"
+                        src="{{ asset('images/profiles/none_profile.jpg') }}"
+                        alt="Your avatar">
+                    @endif
                 </button>
 
                 <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"

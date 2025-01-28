@@ -53,7 +53,7 @@ class ProfileController extends Controller
         }
 
         if ($request->hasFile('profile')) {
-            $path = $request->input('path', 'images/profiles/');
+            $path = $request->input('path', 'profiles');
             if ($name = $this->saveImage($request->profile, $path)) {
                 $validated['profile'] = $name;
             }
