@@ -1,7 +1,7 @@
 <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
     <div class="flex items-center justify-center mt-8">
         <div class="flex items-center">
-        <img src="{{ asset('data/logos/ss_logo.avif') }}" alt="Logo" style="width: 35px; height: auto;">
+            <img src="{{ asset('data/logos/ss_logo.avif') }}" alt="Logo" style="width: 35px; height: auto;">
 
             <a href="{{ route('admin.dashboard') }}">
                 <span class="text-white text-2xl mx-2 font-semibold">{{ __('share-story')}}</span>
@@ -70,6 +70,18 @@
             </svg>
 
             <span class="mx-3">{{ __('post')}}</span>
+        </a>
+        @endcanany
+
+        @canany('Tag access','Tag add','Tag edit','Tag delete')
+        <a class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ Route::currentRouteNamed('admin.tags.index') ? 'active' : '' }}"
+            href="{{ route('admin.tags.index')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 3L7.5 21m9-18L15 21M3 9h18M3 15h18" />
+            </svg>
+
+
+            <span class="mx-3">{{ __('tag')}}</span>
         </a>
         @endcanany
 

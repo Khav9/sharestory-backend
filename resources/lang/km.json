@@ -38,5 +38,21 @@
     "enter_role": "បញ្ចូលតួនាទី",
     "submit": "ដាក់ស្នើ",
     "update": "កែសម្រួល",
-    "role_deleted": "តួនាទីត្រូវបានលុប !!!"
+    "role_deleted": "តួនាទីត្រូវបានលុប !!!",
+    "permission_name": "ឈ្មោះសិទ្ធិអនុញ្ញាត",
+    "created": "បានបង្កើត",
+    "last_login": "ការចូលចុងក្រោយ",
+    "new_user": "អ្នកប្រើប្រាស់ថ្មី",
+    "mail_setting": "ការកំណត់អ៊ីមែល",
+    "mathematics": "គណិតវិទ្យា",
+    "physics": "រូបវិទ្យា",
+    "chemistry": "គីមីវិទ្យា",
+    "biology": "ជីវវិទ្យា",
+    "geography": "ភូមិវិទ្យា",
+    "literature": "អក្សរសាស្រ្ត",
+    "art": "សិល្បៈ",
+    "music": "តន្ត្រី",
+    "physical_education": "កីឡា",
+    "coding": "ការសរសេរកូដ",
+    "english_subject": "ភាសាអង់គ្លេស"
 }

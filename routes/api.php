@@ -28,12 +28,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/me', [AuthController::class, 'index'])->middleware('auth:sanctum');
-Route::get('/post/list', [PostController::class, 'index'])->middleware('auth:sanctum');
+// Route::get('/post/list', [PostController::class, 'index'])->middleware('auth:sanctum');
 
 
 Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
     // Route::apiResource('users', 'UserController');
     Route::get('/user', [AuthController::class, 'getUserAuth']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::apiResource('posts', PostController::class);
     
 });

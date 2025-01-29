@@ -66,7 +66,7 @@
                                         alt="">
                                     @else
                                     <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                                        src="{{ asset('images/profiles/none_profile.jpg') }}"
+                                        src="{{ asset('data/profile/none_profile.jpg') }}"
                                         alt="">
                                     @endif
                                 </td>

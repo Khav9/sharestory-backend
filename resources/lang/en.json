@@ -43,6 +43,16 @@
     "created": "Created",
     "last_login": "Last Login",
     "new_user": "New User",
-    "mail_setting": "Mail Setting"
-
+    "mail_setting": "Mail Setting",
+    "mathematics": "Mathematics",
+    "physics": "Physics",
+    "chemistry": "Chemistry",
+    "biology": "Biology",
+    "geography": "Geography",
+    "literature": "Literature",
+    "art": "Art",
+    "music": "Music",
+    "physical_education": "Physical Education",
+    "coding": "Coding",
+    "english_subject": "English"
 }

@@ -14,8 +14,8 @@
                 </div>
         
                 <div class="flex flex-col space-y-2">
-                    <label for="description" class="text-gray-700 select-none font-medium">Description</label>
-                    <textarea name="description" id="description" placeholder="Enter description" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" rows="5">{{ old('description',$post->description) }}</textarea>
+                    <label for="content" class="text-gray-700 select-none font-medium">Content</label>
+                    <textarea name="content" id="content" placeholder="Enter content" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" rows="5">{{ old('content',$post->content) }}</textarea>
                 </div>
     
                 <h3 class="text-xl my-4 text-gray-600">Role</h3>
