@@ -1,8 +1,10 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TagSeeder extends Seeder
 {
@@ -12,18 +14,26 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         $tags = [
-            ['tagname' => 'Mathematics'],
-            ['tagname' => 'Physics'],
-            ['tagname' => 'Chemistry'],
-            ['tagname' => 'Biology'],
-            ['tagname' => 'Geography'],
-            ['tagname' => 'Literature'],
-            ['tagname' => 'Art'],
-            ['tagname' => 'Music'],
-            ['tagname' => 'Physical Education'],
-            ['tagname' => 'Coding'],
+            'Mathematics',
+            'Physics',
+            'Chemistry',
+            'Biology',
+            'Geography',
+            'Literature',
+            'Art',
+            'Music',
+            'Physical Education',
+            'Coding'
         ];
 
-        DB::table('tags')->insert($tags);
+        $timestamp = Carbon::now();
+
+        $data = array_map(fn($tag) => [
+            'tagname' => $tag,
+            'created_at' => $timestamp,
+            'updated_at' => $timestamp
+        ], $tags);
+
+        DB::table('tags')->upsert($data, ['tagname']); // Prevents duplicates based on 'tagname'
     }
 }

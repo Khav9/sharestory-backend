@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
+use App\Models\TagTranslation;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -30,10 +31,20 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
-
-        return view('setting.tag.index',['tags'=>$tags]);
+        $lang = session('locale');
+        $tags = Tag::paginate(10);
+        $tags->getCollection()->transform(function ($tag) use ($lang) {
+            $translation = TagTranslation::where('tag_id', $tag->id)
+                ->where('language', $lang)
+                ->first();
+            $tag->tagname = $translation ? $translation->translated : $tag->tagname;
+            return $tag;
+        });
+    
+        return view('setting.tag.index', ['tags' => $tags]);
     }
+    
+    
 
     /**
      * Show the form for creating a new resource.

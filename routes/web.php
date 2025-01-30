@@ -60,6 +60,7 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('users','UserController');
         Route::resource('posts','PostController');
         Route::resource('tags','TagController');
+        Route::resource('tagTranslations','TagTranslationsController');
 
         Route::get('/profile',[ProfileController::class,'index'])->name('profile');
         Route::put('/profile-update',[ProfileController::class,'update'])->name('profile.update');
@@ -68,7 +69,7 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
 });
 
 Route::get('lang/{locale}', function ($locale) {
-    if (in_array($locale, ['en', 'km', 'th'])) {
+    if (in_array($locale, config('app.locales'))) {
         session(['locale' => $locale]);  // Store the selected locale in the session
         App::setLocale($locale);  // Set the locale for the current request
     }

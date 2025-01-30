@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PostSeeder::class);
         $this->call(MailsettingSeeder::class);
         $this->call(TagSeeder::class);
+        $this->call(TagTranslationSeeder::class);
     }
 }
