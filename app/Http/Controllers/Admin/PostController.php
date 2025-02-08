@@ -1,23 +1,26 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Services\MarkdownService;
+use Mews\Purifier\Facades\Purifier;
+
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    function __construct()
+    protected $markdownService;
+
+    public function __construct(MarkdownService $markdownService)
     {
-        $this->middleware('role_or_permission:Post access|Post create|Post edit|Post delete', ['only' => ['index','show']]);
-        $this->middleware('role_or_permission:Post create', ['only' => ['create','store']]);
-        $this->middleware('role_or_permission:Post edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Post access|Post create|Post edit|Post delete', ['only' => ['index', 'show']]);
+        $this->middleware('role_or_permission:Post create', ['only' => ['create', 'store']]);
+        $this->middleware('role_or_permission:Post edit', ['only' => ['edit', 'update']]);
         $this->middleware('role_or_permission:Post delete', ['only' => ['destroy']]);
+
+        $this->markdownService = $markdownService;
     }
 
     /**
@@ -27,9 +30,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $Post= Post::paginate(10);
+        $Post = Post::paginate(10);
 
-        return view('post.index',['posts'=>$Post]);
+        return view('post.index', ['posts' => $Post]);
     }
 
     /**
@@ -50,7 +53,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data= $request->all();
+        $data = $request->all();
         $data['user_id'] = Auth::user()->id;
         $Post = Post::create($data);
         return redirect()->back()->withSuccess('Post created !!!');
@@ -62,11 +65,21 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         $post = Post::findOrFail($id);
+    
+        // Parse Markdown content to HTML
+        $post['content'] = $this->markdownService->parse($post->content);
+    
+        // Clean the content using Purifier
+        $post['content'] = Purifier::clean($post->content);
+    
         return view('post.detail', ['post' => $post]);
     }
+    
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -76,7 +89,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-       return view('post.edit',['post' => $post]);
+        return view('post.edit', ['post' => $post]);
     }
 
     /**

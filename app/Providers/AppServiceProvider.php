@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Mailsetting;
+use App\Services\MarkdownService;
+use Parsedown;
 
 use Config;
 
@@ -16,7 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //register markdown service
+        $this->app->singleton(MarkdownService::class, function ($app) {
+            return new MarkdownService(new Parsedown());
+        });
     }
 
     /**
